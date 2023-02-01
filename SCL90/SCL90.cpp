@@ -120,7 +120,7 @@ int main()
 	if (Total >= 160) {
 		cout << "需要进行阳性筛查" << endl;
 		for (int i = 0; i < 91; i++) {
-			if (a[i] > 2) {
+			if (a[i] >= 2) {
 				PositiveItem++;
 			}
 		}
