@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	int a[100] = {
+	/*int a[100] = {
 		0,
 		2, 3, 3, 1, 2,
 		3, 1, 3, 3, 4,
@@ -23,19 +23,27 @@ int main()
 		3, 2, 2, 1, 1,
 		1, 3, 2, 3, 1,
 		1, 1, 1, 2, 2,
-		4, 3, 2, 1, 1 };
+		4, 3, 2, 1, 1 }; */
+	int a[100] = { 0 };
+	a[0] = 0;
+	for (int i = 1; i <= 18; i++) {
+		cout << "请输入第" << (i * 5 - 4) << "-" << i * 5 << endl;
+		cin >> a[i * 5 - 4] >> a[i * 5 - 3] >> a[i * 5 - 2] >> a[i * 5 - 1] >> a[i * 5];
+	}
 
-	float Somzatization = 0;           // 躯体化
-	float ObsessiveCompulsiveSymp = 0; // 强迫症状
-	float RelationshipSensitivity = 0; // 人际关系敏感
-	float Depression = 0;              // 抑郁
-	float Anxiety = 0;                 // 焦虑
-	float Hostility = 0;               // 敌对
-	float Horror = 0;                  // 恐怖
-	float Crankiness = 0;              // 偏执
-	float Psychotic = 0;               // 精神病性
-	float Other = 0;                   // 其他
-	float Total = 0;                   // 总和
+	double Somzatization = 0;           // 躯体化
+	double ObsessiveCompulsiveSymp = 0; // 强迫症状
+	double RelationshipSensitivity = 0; // 人际关系敏感
+	double Depression = 0;              // 抑郁
+	double Anxiety = 0;                 // 焦虑
+	double Hostility = 0;               // 敌对
+	double Horror = 0;                  // 恐怖
+	double Crankiness = 0;              // 偏执
+	double Psychotic = 0;               // 精神病性
+	double Other = 0;                   // 其他
+	double Total = 0;                   // 总分
+	double Average = 0;					// 总均分
+	int    PositiveItem = 0;			// 阳性项目（分数大于2）
 
 	Somzatization =
 		(a[1] + a[4] + a[12] + a[27] +
@@ -93,19 +101,38 @@ int main()
 	{
 		Total += a[i];
 	}
-	Total /= 90.0;
+	Average = Total / 90.0;
 
-	cout << "躯体化：     " << Somzatization << endl;
-	cout << "强迫症状：   " << ObsessiveCompulsiveSymp << endl;
+	cout << "躯体化：      " << Somzatization << endl;
+	cout << "强迫症状：    " << ObsessiveCompulsiveSymp << endl;
 	cout << "人际关系敏感：" << RelationshipSensitivity << endl;
-	cout << "抑郁：       " << Depression << endl;
-	cout << "焦虑：       " << Anxiety << endl;
-	cout << "敌对：       " << Hostility << endl;
-	cout << "恐怖：       " << Horror << endl;
-	cout << "偏执：       " << Crankiness << endl;
+	cout << "抑郁：        " << Depression << endl;
+	cout << "焦虑：        " << Anxiety << endl;
+	cout << "敌对：        " << Hostility << endl;
+	cout << "恐怖：        " << Horror << endl;
+	cout << "偏执：        " << Crankiness << endl;
 	cout << "精神病性：    " << Psychotic << endl;
-	cout << "其他：       " << Other << endl;
-	cout << "总分：       " << Total << endl;
+	cout << "其他：        " << Other << endl;
+	cout << "总分：        " << Total << endl;
+	cout << "总均分：      " << Average << endl;
 
+
+	if (Total >= 160) {
+		cout << "需要进行阳性筛查" << endl;
+		for (int i = 0; i < 91; i++) {
+			if (a[i] > 2) {
+				PositiveItem++;
+			}
+		}
+		if (PositiveItem >= 43) {
+			cout << "阳性项目数超过正常数量，需进一步检查。" << endl;
+		}
+		else {
+			cout << "阳性项目数：" << PositiveItem << endl;
+			cout << "阳性项目数正常." << endl;
+		}
+	}
+
+	system("pause");
 	return 0;
 }
